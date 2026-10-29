@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>轻收藏 · 管理</title>
+  <link rel="stylesheet" href="common.css">
+  <link rel="stylesheet" href="manager.css">
+</head>
+<body class="manager">
+  <aside class="sidebar">
+    <div class="brand">
+      <img src="icons/icon32.png" alt="" width="26" height="26">
+      <div class="brand-text">
+        <strong>轻收藏</strong>
+        <span>书签管理</span>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <button class="nav-item" data-mode="all">
+        <span class="nav-dot dot-all"></span>全部书签
+        <span class="nav-count" id="count-all">0</span>
+      </button>
+      <button class="nav-item" data-mode="recent">
+        <span class="nav-dot dot-recent"></span>最近添加
+        <span class="nav-count" id="count-recent">0</span>
+      </button>
+      <button class="nav-item" data-mode="dupes">
+        <span class="nav-dot dot-dupes"></span>重复项
+        <span class="nav-count" id="count-dupes">0</span>
+      </button>
+      <button class="nav-item" data-mode="empty">
+        <span class="nav-dot dot-empty"></span>空文件夹
+        <span class="nav-count" id="count-empty">0</span>
+      </button>
+    </nav>
+
+    <div class="tree-head">文件夹</div>
+    <div class="tree" id="tree"></div>
+
+    <div class="sidebar-foot">
+      <label for="default-folder">新建书签默认位置</label>
+      <select id="default-folder"></select>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="toolbar">
+      <div class="crumbs" id="crumbs"></div>
+      <div class="tools">
+        <label class="search-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <circle cx="11" cy="11" r="7"/>
+            <path d="M20 20l-3.5-3.5"/>
+          </svg>
+          <input id="search" type="search" placeholder="搜索标题或网址（/）" autocomplete="off" spellcheck="false">
+        </label>
+        <select id="sort" class="sort" title="排序">
+          <option value="default">默认排序</option>
+          <option value="name">按名称</option>
+          <option value="date">最近添加</option>
+          <option value="clicks">访问最多</option>
+        </select>
+        <div class="segmented" id="layout">
+          <button data-layout="grid" class="active" title="网格视图">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="7" height="7" rx="1.6"/><rect x="13" y="4" width="7" height="7" rx="1.6"/><rect x="4" y="13" width="7" height="7" rx="1.6"/><rect x="13" y="13" width="7" height="7" rx="1.6"/></svg>
+          </button>
+          <button data-layout="list" title="列表视图">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+        </div>
+        <button class="btn primary" id="btn-new">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+          新建书签
+        </button>
+      </div>
+    </header>
+
+    <section class="content layout-grid" id="content"></section>
+  </main>
+
+  <dialog class="dialog" id="edit-dialog">
+    <form id="edit-form" novalidate>
+      <h2 id="dialog-title">新建书签</h2>
+      <label class="field">
+        <span>标题</span>
+        <input id="f-title" type="text" maxlength="500" placeholder="留空则使用网址">
+      </label>
+      <label class="field">
+        <span>网址</span>
+        <input id="f-url" type="text" placeholder="https://example.com" autocomplete="off" spellcheck="false">
+      </label>
+      <label class="field">
+        <span>文件夹</span>
+        <select id="f-folder"></select>
+      </label>
+      <footer class="dialog-actions">
+        <button type="button" class="btn" id="dialog-cancel">取消</button>
+        <button type="submit" class="btn primary">保存</button>
+      </footer>
+    </form>
+  </dialog>
+
+  <script src="common.js"></script>
+  <script src="manager.js"></script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>轻收藏</title>
+  <link rel="stylesheet" href="common.css">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <img src="icons/icon32.png" alt="" width="22" height="22">
+      <span>轻收藏</span>
+    </div>
+    <div class="top-actions">
+      <button id="btn-manage" class="icon-btn" title="打开管理页">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 4h6v6M20 4l-7 7M10 20H4v-6M4 20l7-7"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="search-row">
+    <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <circle cx="11" cy="11" r="7"/>
+      <path d="M20 20l-3.5-3.5"/>
+    </svg>
+    <input id="search" type="search" placeholder="搜索标题或网址" autocomplete="off" spellcheck="false">
+    <kbd>Esc</kbd>
+  </div>
+
+  <main id="view" class="view"></main>
+
+  <div id="ctx-menu" class="ctx-menu" hidden></div>
+
+  <script src="common.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
